@@ -1,39 +1,17 @@
 const express = require("express");
+const {
+  applyLeave,
+  getMyLeaves,
+  getAllLeaves,
+  updateLeaveStatus
+} = require("../controllers/leaveController");
+const { protect, authorize } = require("../middleware/authMiddleware");
+
 const router = express.Router();
-const Leave = require("../models/Leave");
 
-// Apply Leave
-router.post("/", async (req, res) => {
-  try {
-    const leave = await Leave.create(req.body);
-    res.status(201).json(leave);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
-
-// Get All Leaves
-router.get("/", async (req, res) => {
-  try {
-    const leaves = await Leave.find().populate("student");
-    res.json(leaves);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Approve / Reject Leave
-router.put("/:id", async (req, res) => {
-  try {
-    const updatedLeave = await Leave.findByIdAndUpdate(
-      req.params.id,
-      { status: req.body.status },
-      { new: true }
-    );
-    res.json(updatedLeave);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+router.post("/", protect, authorize("student", "faculty"), applyLeave);
+router.get("/mine", protect, authorize("student", "faculty"), getMyLeaves);
+router.get("/", protect, authorize("admin"), getAllLeaves);
+router.patch("/:id/status", protect, authorize("admin"), updateLeaveStatus);
 
 module.exports = router;
