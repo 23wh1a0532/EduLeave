@@ -124,7 +124,6 @@ EduLeave is a **web-based leave management system** designed for educational ins
 
 
 
-=======
 EduLeave is a full-stack leave management system built for students, faculty, and administrators. It provides separate authentication flows for regular users and admins, supports leave application and review workflows, and offers a simple dashboard-based experience for tracking leave activity.
 
 The project is split into:
@@ -498,4 +497,4 @@ Make sure the `ADMIN_SECRET` entered in the form matches the value in `backend/.
 ## Author Notes
 
 This project is a good base for a college or department leave management workflow. It already includes the core authentication and approval flow, and it can be extended further with notifications, better security, and deployment support.
->>>>>>> aa2a15b (complete project)
+
