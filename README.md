@@ -4,7 +4,8 @@
 EduLeave is a **web-based leave management system** designed for educational institutions. It allows students to apply for leave, and administrators or teachers to review and approve/reject leave requests efficiently.
 
 ---
-
+## 🎥 Project Demo
+👉 [Watch Full Execution Video](https://drive.google.com/file/d/1fRyeW0C939QkJjowCuetOCSaxGMQ7Wkg/view?usp=sharing)
 ## Table of Contents
 
 * [Features](#features)
